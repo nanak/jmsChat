@@ -11,6 +11,10 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Paradox
+ */
 public class JMSChatReceiver {
 
 	private static String user = ActiveMQConnection.DEFAULT_USER;
