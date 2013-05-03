@@ -77,7 +77,7 @@ public class JMSChatRun extends Thread{
                  }
                  if(br.ready()){
                      String m = br.readLine();
-                     if(m!="EXIT"){
+                     if(!m.startsWith("/exit")){
                          m = user+ "@" +InetAddress.getLocalHost()+": "+m;
                         TextMessage messageSend = session.createTextMessage(m);
                         producer.send(messageSend);
