@@ -70,7 +70,7 @@ public class JMSChatRun extends Thread{
 		// Create the consumer
 		consumer = session.createConsumer( destination );
 		// Start receiving
-		TextMessage message = (TextMessage) consumer.receive(100);
+		TextMessage message = (TextMessage) consumer.receive(300);
                 if ( message != null ) {
                     System.out.println(message.getText() );
                     message.acknowledge();
