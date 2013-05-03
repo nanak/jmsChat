@@ -9,6 +9,7 @@ package jmsChat;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import static java.lang.Thread.MIN_PRIORITY;
+import java.net.InetAddress;
 import java.net.URI;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -71,12 +72,13 @@ public class JMSChatRun extends Thread{
 		// Start receiving
 		TextMessage message = (TextMessage) consumer.receive(100);
                 if ( message != null ) {
-                    System.out.println("Message received: " + message.getText() );
+                    System.out.println(message.getText() );
                     message.acknowledge();
                  }
                  if(br.ready()){
                      String m = br.readLine();
                      if(m!="EXIT"){
+                         m = user+ " " +InetAddress.getLocalHost()+" sent: "+m;
                         TextMessage messageSend = session.createTextMessage(m);
                         producer.send(messageSend);
                      }else{
