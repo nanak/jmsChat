@@ -33,7 +33,7 @@ public class JMSChatRun extends Thread{
   private static String password = ActiveMQConnection.DEFAULT_PASSWORD;
   private static String url = null;//"failover://tcp://192.168.1.101:61616";
   private static String subject = null;//"VSDBChat";
-  private boolean go = false;
+  private boolean go = true;
     
     public JMSChatRun (String ip, String user, String subject){
         this.user=user;
