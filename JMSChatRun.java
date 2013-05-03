@@ -70,7 +70,7 @@ public class JMSChatRun extends Thread{
 		// Create the consumer
 		consumer = session.createConsumer( destination );
 		// Start receiving
-		TextMessage message = (TextMessage) consumer.receive(100);
+		TextMessage message = (TextMessage) consumer.receive(40);
                 if ( message != null ) {
                     System.out.println(message.getText() );
                     message.acknowledge();
@@ -78,7 +78,7 @@ public class JMSChatRun extends Thread{
                  if(br.ready()){
                      String m = br.readLine();
                      if(m!="EXIT"){
-                         m = user+ " " +InetAddress.getLocalHost()+" sent: "+m;
+                         m = user+ "@" +InetAddress.getLocalHost()+": "+m;
                         TextMessage messageSend = session.createTextMessage(m);
                         producer.send(messageSend);
                      }else{
